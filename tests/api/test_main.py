@@ -1,5 +1,6 @@
 import datetime as dt
 from unittest import mock
+from urllib import request
 
 import responses
 
@@ -68,3 +69,13 @@ def test_get_userinfo(client, mocker):
     response = client.get("/user/dummy/info")
     assert response.status_code == 200
     assert response.json() == user_data
+
+
+def test_get_user(client):
+
+    name = "dummy"
+
+    responses.get(
+        "http://fasjson.example.test/v1/users/dummy/",
+
+    )

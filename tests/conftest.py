@@ -153,3 +153,11 @@ async def db_async_obj(request, db_async_session):
         yield obj
 
         await db_async_session.rollback()
+
+
+@pytest.fixture
+async def make_user(db_async_session):
+    """Fixture to create a dummy user in testing DB"""
+    async with db_async_session.begin():
+        def _make_user(name):
+            
